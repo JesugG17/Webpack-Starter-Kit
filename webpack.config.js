@@ -1,11 +1,12 @@
 const HtmlWebPackPlugin    = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin           = require("copy-webpack-plugin");
-
+const path                 = require('path');
 module.exports = {
     mode: 'development',
     output: {
-        clean: true
+        clean: true,
+        path: path.resolve(__dirname, 'docs'),
     },
     module: {
         rules: [
@@ -24,7 +25,7 @@ module.exports = {
             },
             { 
                 test: /styles.css$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.(png|jpe?g|gif)$/,
@@ -54,5 +55,6 @@ module.exports = {
                 }
             ]
         })
+
     ],
 }   
